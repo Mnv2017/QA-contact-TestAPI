@@ -3,8 +3,6 @@ package com.telran.contapi.tests;
 import com.jayway.restassured.RestAssured;
 import com.telran.contapi.dto.AuthRequestDto;
 import com.telran.contapi.dto.AuthResponseDto;
-import com.telran.contapi.dto.ContactDto;
-import com.telran.contapi.dto.GetAllContactDto;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 

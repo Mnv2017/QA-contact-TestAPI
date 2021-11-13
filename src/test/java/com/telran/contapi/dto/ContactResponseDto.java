@@ -4,11 +4,16 @@ import lombok.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
 @Setter
+@Getter
 @Builder
 @ToString
 public class ContactResponseDto {
-
-    int id;
+    String address;
+    String description;
+    String email;
+    int id = 0;
+    String lastName;
+    String name;
+    String phone;
 }

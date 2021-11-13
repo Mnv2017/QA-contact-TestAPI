@@ -2,14 +2,13 @@ package com.telran.contapi.dto;
 
 import lombok.*;
 
-import java.util.List;
-
 @AllArgsConstructor
 @NoArgsConstructor
-@Setter
 @Getter
+@Setter
 @Builder
 @ToString
-public class GetAllContactDto {
-    List<ContactResponseDto> contactDtoList;
+public class ContactResponseIdDto {
+
+    int id;
 }
