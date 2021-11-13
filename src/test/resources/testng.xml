@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="AuthAPI" verbose="1" >
+
+    <test name="Regression">
+        <classes>
+            <class name="com.telran.contapi.tests.AuthTests"/>
+        </classes>
+    </test>
+</suite>
