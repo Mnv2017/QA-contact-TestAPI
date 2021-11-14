@@ -18,7 +18,38 @@ public class ContactTests {
 
     }
 
-    @Test(enabled = false)
+    @Test(enabled = true)
+    public void getAllContactDto() {
+//        String token1 = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6Imtyb29zQGdtLmNvbSJ9.BbVSHfbAvgsFMmWD-6KDLIvdwxyw07MrYPMkdZW2Tmc";
+
+        GetAllContactDto responseDto = given()
+                .header("Authorization", token)
+                .get("contact")
+                .then()
+                .assertThat().statusCode(200)
+                .extract().response().body().as(GetAllContactDto.class);
+
+        if (responseDto.getContacts() != null) {
+            for (ContactDto contact : responseDto.getContacts()) {
+                System.out.println(contact.getId() + ",  " + contact.getName());
+                System.out.println("**************************");
+            }
+        } else if (responseDto.getContacts() == null)
+            System.out.println("  Список контрактов = null! ");
+        else if (responseDto.getContacts().size() == 0)
+            System.out.println(" У данного user нет контактов!");
+/*
+        String responseDto = given()
+                .header("Authorization", token)
+                .get("contact")
+                .then()
+                .assertThat().statusCode(500)
+                .extract().path("message");
+        System.out.println(responseDto);
+*/
+    }
+
+   /* @Test(enabled = false)
     public void getAllContactDto() {
 //        String token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6Im1tbUBtYWlsLnJ1In0.QIqAfln3hQCb2whO1P-YJFyUaFr1vV_scidKYDTlGSo";
 
@@ -38,17 +69,8 @@ public class ContactTests {
             System.out.println("  Список контрактов = null! ");
         else if (responseDto.getContactDtoList().size() == 0)
             System.out.println(" У данного user нет контактов!");
-/*
-        String responseDto = given()
-                .header("Authorization", token)
-                .get("contact")
-                .then()
-                .assertThat().statusCode(500)
-                .extract().path("message");
-        System.out.println(responseDto);
-*/
-    }
 
+*/
     @Test(priority = 1)
     public void addContactPositiveTest() {
         ContactRequestDto contactRequestDto = ContactRequestDto.builder()
@@ -86,7 +108,7 @@ public class ContactTests {
                 .name("Yurij2")
                 .phone("9911880000")
                 .build();
-        ContactResponseDto contactResponseDto = given()
+        ContactDto contactResponseDto = given()
                 .contentType("application/json")
                 .header("Authorization", token)
                 .body(contactRequestDto)
@@ -94,7 +116,7 @@ public class ContactTests {
                 .put("contact")
                 .then()
                 .assertThat().statusCode(200)
-                .extract().body().as(ContactResponseDto.class);
+                .extract().body().as(ContactDto.class);
         System.out.println(" #########  Контакт изменен! "+ contactResponseDto.getName()+",  "+contactResponseDto.getLastName());
     }
 

@@ -2,6 +2,7 @@ package com.telran.contapi.dto;
 
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @AllArgsConstructor
@@ -11,5 +12,5 @@ import java.util.List;
 @Builder
 @ToString
 public class GetAllContactDto {
-    List<ContactResponseDto> contactDtoList;
+    List<ContactDto> contacts;
 }

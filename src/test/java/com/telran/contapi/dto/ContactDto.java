@@ -8,7 +8,7 @@ import lombok.*;
 @Getter
 @Builder
 @ToString
-public class ContactResponseDto {
+public class ContactDto {
     String address;
     String description;
     String email;
